@@ -1,0 +1,38 @@
+// Primary Colors
+$primary-color: #007bff;  // Main brand color (blue)
+$secondary-color: #00c6ff;  // Secondary accent (cyan)
+$accent-color: #ff5722;  // Highlight color (orange)
+$danger-color: #ff4757;  // Error/Delete color (red)
+
+// Background Colors
+$background-color: #f9f9f9;  // Light background
+$card-background: #ffffff;  // Card background color
+
+// Text Colors
+$text-color: #333;  // Default text
+$secondary-text-color: #666;  // Lighter text
+$placeholder-text-color: #aaa;  // Input placeholder color
+
+// Border Colors
+$border-color: #ddd;  // Light gray borders
+
+// Shadows
+$box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); // Light shadow
+$box-shadow-hover: 0px 8px 20px rgba(0, 0, 0, 0.3); // Stronger hover shadow
+
+// Button Styles
+$button-padding: 12px;
+$button-border-radius: 5px;
+
+// Grid Layout
+$grid-gap: 20px;
+$grid-columns: 4; // Default 4 columns
+
+// Responsive Breakpoints
+$breakpoint-lg: 1024px; // Tablets
+$breakpoint-md: 768px; // Small screens
+$breakpoint-sm: 480px; // Mobile
+
+// Fonts
+$font-family: "Poppins", sans-serif;
+

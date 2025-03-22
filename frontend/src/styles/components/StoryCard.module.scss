@@ -1,0 +1,75 @@
+// StoryCard.module.scss
+.storyCard {
+  position: relative; // Needed for the badge positioning
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .trending-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff4757;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    width: 100%;
+    height: 180px; // Increased for better visual balance
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+  }
+
+  .content {
+    padding: 14px;
+    text-align: center;
+
+    h2 {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.5;
+      max-height: 70px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .readMore {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+  }
+}
+

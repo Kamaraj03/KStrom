@@ -1,0 +1,158 @@
+@import "../styles/variables";
+
+.view-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #e3f2fd, #f9f9f9);
+}
+
+.view-box {
+  max-width: 700px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Image Styling - Consistent with Home Page */
+.view-image {
+  width: 100%;
+  max-width: 600px;
+  height: 400px; /* Fixed height for uniformity */
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Title & Content */
+.view-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.view-content {
+  font-size: 1.1rem;
+  color: #444;
+  text-align: justify;
+  line-height: 1.8;
+}
+
+/* Interaction Box */
+.interaction-box {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: #f1f1f1;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: #ddd;
+  }
+}
+
+.like-icon {
+  color: red;
+}
+.comment-icon {
+  color: #007bff;
+}
+
+/* Social Media Share Icons */
+.share-icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.share-icon {
+  font-size: 1.5rem;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+/* Social Media Colors */
+.facebook {
+  color: #1877f2;
+}
+.twitter {
+  color: #1da1f2;
+}
+.whatsapp {
+  color: #25d366;
+}
+
+/* Comment Section */
+.comment-section {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.comment-box {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.submit-comment {
+  background: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background: #0056b3;
+  }
+}
+
+/* Comments List */
+.comments-section {
+  margin-top: 10px;
+
+  .comment {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #007bff;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
