@@ -13,6 +13,7 @@ const AdminPanel = () => {
   const [type, setType] = useState("poem"); // "poem" or "story"
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showPoems, setShowPoems] = useState(true); // Toggle for showing Poems or Stories
 
   useEffect(() => {
     fetchData();
@@ -123,26 +124,20 @@ const AdminPanel = () => {
         </button>
       </form>
 
-      <h2>Existing Poems</h2>
-      <ul className="admin-panel__list">
-        {poems.map((poem) => (
-          <li key={poem._id} className="admin-panel__item">
-            <h3>{poem.title}</h3>
-            <p>{poem.content.substring(0, 100)}...</p>
-            <button onClick={() => handleEdit(poem, "poem")}>Edit</button>
-            <button onClick={() => handleDelete(poem._id, "poem")}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      {/* Toggle buttons for poems and stories */}
+      <div className="admin-panel__toggle">
+        <button onClick={() => setShowPoems(true)} className={showPoems ? 'active' : ''}>Show Poems</button>
+        <button onClick={() => setShowPoems(false)} className={!showPoems ? 'active' : ''}>Show Stories</button>
+      </div>
 
-      <h2>Existing Stories</h2>
+     
       <ul className="admin-panel__list">
-        {stories.map((story) => (
-          <li key={story._id} className="admin-panel__item">
-            <h3>{story.title}</h3>
-            <p>{story.content.substring(0, 100)}...</p>
-            <button onClick={() => handleEdit(story, "story")}>Edit</button>
-            <button onClick={() => handleDelete(story._id, "story")}>Delete</button>
+        {(showPoems ? poems : stories).map((item) => (
+          <li key={item._id} className="admin-panel__item">
+            <h3>{item.title}</h3>
+            <p>{item.content.substring(0, 100)}...</p>
+            <button onClick={() => handleEdit(item, showPoems ? "poem" : "story")}>Edit</button>
+            <button onClick={() => handleDelete(item._id, showPoems ? "poem" : "story")}>Delete</button>
           </li>
         ))}
       </ul>
