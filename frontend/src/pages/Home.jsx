@@ -14,19 +14,26 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [quote, setQuote] = useState("");	
   
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const poemsRes = await axios.get(`${API_BASE_URL}/api/poems`);
-        const storiesRes = await axios.get(`${API_BASE_URL}/api/stories`);
-        
-        // Ensure each post has a type
+        const [poemsRes, storiesRes, quoteRes] = await Promise.all([
+          axios.get(`${API_BASE_URL}/api/poems`),
+          axios.get(`${API_BASE_URL}/api/stories`),
+          axios.get(`${API_BASE_URL}/api/quote`)
+        ]);
+
         const poemsWithType = poemsRes.data.map(poem => ({ ...poem, type: "poem" }));
         const storiesWithType = storiesRes.data.map(story => ({ ...story, type: "story" }));
-        
+
         setPoems(poemsWithType);
         setStories(storiesWithType);
+
+        // Fetch Quote of the Day from API
+        setQuote(quoteRes.data?.text || "No quote available today.");
       } catch (err) {
         setError("Failed to load content. Please try again.");
       } finally {
@@ -36,18 +43,20 @@ const Home = () => {
     fetchData();
   }, []);
 
-  // Trending Logic: Filter posts with more than 10 likes OR 5+ comments
   const trendingPosts = [...poems, ...stories].filter(post => post.likes > 10 || (post.comments && post.comments.length > 5));
-
-  // Filtered posts based on search query
   const filteredPoems = poems.filter(poem => poem.title.toLowerCase().includes(searchQuery.toLowerCase()));
   const filteredStories = stories.filter(story => story.title.toLowerCase().includes(searchQuery.toLowerCase()));
   const filteredTrending = trendingPosts.filter(post => post.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
     <div className="home-container">
-      <h1 className="title">Welcome to KStrom</h1>
+      <h1 className="title">Welcome to <span className="kstrom"> KStrom</span></h1>
       <p className="subtitle"> "கவிதைகளும் கதைகளும்... உங்கள் மனதை வருட வரவேற்கின்றன!"</p>
+
+      {/* Quote of the Day */}
+      <motion.div className="quote-box" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+        <p className="quote">❝ {quote} ❞</p>
+      </motion.div>
 
       {/* Search Bar */}
       <div className="search-bar">
@@ -61,18 +70,11 @@ const Home = () => {
 
       {/* Toggle Buttons */}
       <div className="toggle-buttons">
-        <button className={view === "poems" ? "active" : ""} onClick={() => setView("poems")}>
-          கவிதைகள்
-        </button>
-        <button className={view === "stories" ? "active" : ""} onClick={() => setView("stories")}>
-          சிறு கதைகள்
-        </button>
-        <button className={view === "trending" ? "active" : ""} onClick={() => setView("trending")}>
-          🔥 பிரபலமானவை
-        </button>
+        <button className={view === "poems" ? "active" : ""} onClick={() => setView("poems")}>கவிதைகள்</button>
+        <button className={view === "stories" ? "active" : ""} onClick={() => setView("stories")}>சிறு கதைகள்</button>
+        <button className={view === "trending" ? "active" : ""} onClick={() => setView("trending")}>🔥 பிரபலமானவை</button>
       </div>
 
-      {/* Loading & Error Messages */}
       {loading ? (
         <p className="loading">Loading...</p>
       ) : error ? (
