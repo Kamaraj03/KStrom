@@ -145,44 +145,26 @@
 /* Quote Styling with Fade-In and Glow Effect */
 .quote-box {
   position: absolute;
-  top: 0;
+  top: 25px;
   left: 0;
   max-width: 250px;
   font-size: 0.6em;
   font-weight: bold;
   color: #444;
-  padding: 15px;
-  border-left: 4px solid #007bff;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  padding:0 15px;
+  border-left: 6px double #007bff;
+  height: 40px;
+  background: transparent;
   text-align: left;
   white-space: pre-line;
-  margin: 10px auto;
-  animation: fadeIn 1.5s ease-in-out, glowEffect 3s infinite alternate;
+  align-items: center;
+  line-height: 18px;
+  display: flex;
+
 }
 
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes glowEffect {
-  from {
-    text-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
-  }
-  to {
-    text-shadow: 0px 0px 15px rgba(0, 123, 255, 0.8);
-  }
-}
 
 /* Center search bar */
 .search-bar {
@@ -262,7 +244,7 @@
 /* Grid Layout for Poems & Stories */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* Always 4 columns */
+  grid-template-columns: repeat(5, 1fr); /* Always 4 columns */
   gap: 10px;
   justify-content: center;
   padding: 6px;
@@ -271,64 +253,7 @@
 
 }
 
-/* Fixed Size for Grid Items */
-.poem-card,
-.story-card {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 15px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  backdrop-filter: blur(10px);
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  min-height: 200px;/* Set a fixed height for consistency */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Ensures spacing */
-  opacity: 0;
-  transform: scale(0.95);
-  animation: fadeIn 0.6s ease-in-out forwards;
-
-  &:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  }
-
-  img {
-    width: 100%;
-    height: 150px ;/* Fixed height */
-    object-fit: cover; /* Ensures image fits without stretching */
-    border-radius: 8px;
-    filter: brightness(0.9);
-    transition: filter 0.3s ease-in-out, transform 0.3s ease;
-
-    &:hover {
-      filter: brightness(1);
-      transform: scale(1.05);
-    }
-  }
-
-  h2 {
-    font-size: 1.4rem;
-    margin-top: 5px;
-    color: white;
-    font-weight: bold;
-    text-align: justify; /* Justified title */
-    transition: color ease-in-out;
-  }
-
-  p {
-    font-size: 1rem;
-    color: white;
-    line-height: 1.5;
-    text-align: justify; /* Justified content */
-  }
-}
-
+  
 /* Fade In Animation */
 @keyframes fadeIn {
   0% {
