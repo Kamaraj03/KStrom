@@ -5,6 +5,7 @@ import StoryCard from "../components/StoryCard";
 import { motion } from "framer-motion";
 import "../styles/home.scss";
 
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Home = () => {
@@ -49,7 +50,21 @@ const Home = () => {
   const filteredTrending = trendingPosts.filter(post => post.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
-    <div className="home-container">
+    <div className="home-container" style={{ backgroundImage: "url('/images/forest-bg.jpg')",
+    backgroundSize: "cover", 
+    backgroundPosition: "center", 
+    backgroundRepeat: "no-repeat",
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    position: "relative",
+    zIndex: "1",
+
+    }}>
+	<div className="overlay"></div>{/* Background Overlay for better text visibility */}	  
       <h1 className="title">Welcome to <span className="kstrom"> KStrom</span></h1>
       <p className="subtitle"> "கவிதைகளும் கதைகளும்... உங்கள் மனதை வருட வரவேற்கின்றன!"</p>
 
