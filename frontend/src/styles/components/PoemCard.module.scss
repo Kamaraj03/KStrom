@@ -14,40 +14,27 @@
     column-count: 2;
   }
   @media (max-width: 480px) {
-  column-count: 1;
+    column-count: 1;
   }
 }
 
 .poemCard {
   color: #fff;
   position: relative;
-  background: linear-gradient(135deg, #8a2be2, #1e90ff);
+  background: transparent;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(138, 43, 226, 0.3);
   overflow: hidden;
-  transition: background 0.6s ease-in-out;
-  border: none;
-  animation: floating 3s ease-in-out infinite;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   display: inline-block;
   width: 100%;
   margin-bottom: 12px;
   max-width: 170px;
 
   &:hover {
-    background: linear-gradient(135deg, #ff1493, #ff8c00);
     transform: scale(1.02);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    animation: pulseGlow 0.6s ease-in-out infinite alternate;
-  }
-
-  // ✨ Smooth Glowing Animation
-  @keyframes pulseGlow {
-    from {
-      box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
-    }
-    to {
-      box-shadow: 0 10px 25px rgba(255, 140, 0, 0.6);
-    }
   }
 
   // 📌 Trending Badge Effect
@@ -62,16 +49,6 @@
     padding: 5px 12px;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
-    animation: glow 1.5s infinite alternate;
-  }
-
-  @keyframes glow {
-    from {
-      box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
-    }
-    to {
-      box-shadow: 0 2px 12px rgba(255, 71, 87, 0.7);
-    }
   }
 
   // 🖼️ Image Styling & Animation
@@ -87,26 +64,7 @@
       transform: scale(1.03);
       border-bottom: 3px solid #ff8c00;
       filter: brightness(1.1) blur(1px);
-      animation: rotatingGlow 1.5s infinite alternate;
     }
-  }
-
-  // 🌟 Rotating Glow Border Animation
-  @keyframes rotatingGlow {
-    0% {
-      box-shadow: 0 0 10px rgba(255, 140, 0, 0.4);
-    }
-    50% {
-      box-shadow: 0 0 15px rgba(255, 20, 147, 0.5);
-    }
-    100% {
-      box-shadow: 0 0 10px rgba(30, 144, 255, 0.4);
-    }
-  }
-
-  // 🎭 Parallax Hover Effect
-  &:hover img {
-    transform: translateY(-3px) scale(1.03);
   }
 
   // 📜 Content Styling
@@ -119,7 +77,7 @@
       color: #ffdd57;
       margin-bottom: 10px;
       font-weight: bold;
-      transition: color 0.3s ease;
+      
     }
 
     p {
@@ -133,55 +91,26 @@
     }
   }
 
-  // 🔗 Read More Button with Pulse Animation
+  // 🔗 Read More Button
   .readMore {
     display: block;
     text-align: center;
     margin: 8px auto;
     padding: 8px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
+    background: transparent;
+    color: #fff;
     text-decoration: none;
+    border-radius: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 500;
     transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    animation: pulseButton 1.5s infinite;
 
     &:hover {
-      background: linear-gradient(135deg, #0056b3, #003e80);
+      background: rgba(255, 255, 255, 0.2);
       transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 91, 187, 0.5);
-    }
-  }
-
-  @keyframes pulseButton {
-    0% {
-      transform: scale(1);
-      box-shadow: 0 0 10px rgba(0, 91, 187, 0.5);
-    }
-    50% {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(0, 91, 187, 0.7);
-    }
-    100% {
-      transform: scale(1);
-      box-shadow: 0 0 10px rgba(0, 91, 187, 0.5);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
     }
   }
 }
-
-// 🔄 Floating Effect for Card
-@keyframes floating {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
 

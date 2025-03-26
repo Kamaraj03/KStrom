@@ -22,8 +22,8 @@
 .view-image {
   width: 100%;
   max-width: 600px;
-  height: 400px; /* Fixed height for uniformity */
-  object-fit: cover;
+  height: auto; /* Fixed height for uniformity */
+  object-fit: contain;
   border-radius: 10px;
   margin-bottom: 15px;
 }
@@ -40,21 +40,26 @@
   color: #444;
   text-align: justify;
   line-height: 1.8;
+  white-space: pre-wrap;
 }
 
 /* Interaction Box */
 .interaction-box {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  justify-content: left;
+  align-items: center;
+  gap: 6px;
   margin-top: 15px;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .icon-btn {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   padding: 10px;
   border: none;
   border-radius: 8px;
@@ -62,6 +67,7 @@
   cursor: pointer;
   background: #f1f1f1;
   transition: all 0.3s ease-in-out;
+  max-width: 80px;
 
   &:hover {
     background: #ddd;
@@ -79,7 +85,9 @@
 .share-icons {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  align-items: center;
+  width: 100%;
+  gap: 6px;
   margin-top: 10px;
 }
 
