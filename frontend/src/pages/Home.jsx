@@ -50,7 +50,7 @@ const Home = () => {
   const filteredTrending = trendingPosts.filter(post => post.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
-    <div className="home-container" style={{ backgroundImage: "url('/images/forest-bg.jpg')",
+    <div className="home-container" style={{ backgroundImage: "url('/images/forest-bg.webp')",
     backgroundSize: "cover", 
     backgroundPosition: "center", 
     backgroundRepeat: "no-repeat",
@@ -65,8 +65,8 @@ const Home = () => {
 
     }}>
 	<div className="overlay"></div>{/* Background Overlay for better text visibility */}	  
-      <h1 className="title">Welcome to <span className="kstrom"> KStrom</span></h1>
-      <p className="subtitle"> "கவிதைகளும் கதைகளும்... உங்கள் மனதை வருட வரவேற்கின்றன!"</p>
+      <h1 className="title"> உணர்வுகள் பேசும் இடம் <span className="kstrom"> KStrom</span></h1>
+      <p className="subtitle"> "A place where emotions speak"</p>
 
       {/* Quote of the Day */}
       <motion.div className="quote-box" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
@@ -74,7 +74,8 @@ const Home = () => {
       </motion.div>
 
       {/* Search Bar */}
-      <div className="search-bar">
+      <div className="search-toggle-container">
+        <div className="search-bar">
         <input
           type="text"
           placeholder="Search poems and stories..."
@@ -89,6 +90,7 @@ const Home = () => {
         <button className={view === "stories" ? "active" : ""} onClick={() => setView("stories")}>சிறு கதைகள்</button>
         <button className={view === "trending" ? "active" : ""} onClick={() => setView("trending")}>🔥 பிரபலமானவை</button>
       </div>
+	  </div>
 
       {loading ? (
         <p className="loading">Loading...</p>

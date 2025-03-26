@@ -1,4 +1,6 @@
 @import "../styles/variables"; // Import global variables if needed
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@700&display=swap');
+
 
 /* Home Page Main Container */
 .home-container {
@@ -7,11 +9,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
-  background: url('/images/forest-bg.jpg') no-repeat center/cover;
-  padding: 20px;
+  background: url('/images/forest-bg.webp') no-repeat center/cover;
+  padding: 0;
+  margin: 0;
   z-index: 1;
+
 
 }
 
@@ -28,24 +32,26 @@
 
 /* Title and Subtitle */
 .title {
-  font-size: 2rem;
-  font-family: "Bungee", sans-serif;
+  font-size: 1.8rem;
+  font-family: "Arima Madurai", sans-serif;
   font-weight: bold;
   color: white;
   letter-spacing: 2px;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
   z-index: 2;
   text-align: center;
-  margin-top:0px;
+  margin-top: 0px;
   margin-bottom: 0px;
+  padding: 0px;
+  line-height: 1.2;
 }
 
 .kstrom {
-  font-size: 3rem;
+  font-size: 1.8rem;
   background: linear-gradient(45deg, #ff4500, #ff6347, #ff8c00, #ff0000, #8b0000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.5);
+  text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.5);
   animation: lightning 4.2s infinite alternate;
 }
 
@@ -55,12 +61,12 @@
   }
 
 .subtitle {
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   color: white;
   font-style: italic;
   z-index: 2;
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
   line-height:1.2;
   overflow: hidden;
   white-space: nowrap;
@@ -83,7 +89,7 @@
 /* Quote of the Day Box */
 .quote-box {
   position: absolute;
-  top: 10px;
+  top: 25px;
   left: 5px;
   max-width: 250px;
   font-size: 0.6rem;
@@ -101,21 +107,32 @@
   z-index: 2;
 }
 
+.search-toggle-container {
+  display: flex;
+  gap: 10px;
+  max-width: 700px;
+  margin-top: 30px;
+  align-self: flex-start;
+  width: auto;
+  margin-left: 0;
+  padding-left: 10px;
+}
+
+
 /* Search Bar */
 .search-bar {
-  
+
   display: flex;
   align-items: center;
   background: transparent;
   border-radius: 50px;
-  padding: 6px 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2px 6px;
   width: 100%;
   max-width: 170px;
   transition: all 0.3s ease-in-out;
   z-index: 2;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 7px;
+  margin-top: 7px;
 
 }
 
@@ -123,9 +140,12 @@
   width: 100%;
   border: none;
   outline: none;
-  font-size: 0.8rem;
-  padding: 4px;
-  border-radius: 50px;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  font-weight: bold;
+  border-radius: 30px;
+  height: 36px;
+  text-align: left;
 }
 
 .search-bar input::placeholder {
@@ -142,15 +162,16 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 7px;
+  margin-bottom: 7px;
   z-index: 2;
 
   button {
-    padding: 6px 15px;
+    min-height: 36px;
+    padding: 2px 6px;
     border: none;
     border-radius: 30px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: bold;
     cursor: pointer;
     background: linear-gradient(45deg, #ff6b6b, #ff9a9e);
@@ -180,7 +201,7 @@
   max-width: 1200px;
   width: 100%;
   z-index: 2;
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
 /* Responsive Design */
