@@ -22,7 +22,7 @@
 .view-image {
   width: 100%;
   max-width: 600px;
-  height: auto; /* Fixed height for uniformity */
+  height: auto;
   object-fit: contain;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -82,18 +82,13 @@
 }
 
 /* Social Media Share Icons */
-.share-icons {
+.share-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   gap: 6px;
-  margin-top: 10px;
 }
 
 .share-icon {
   font-size: 1.5rem;
-  margin: 0 5px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 
@@ -102,7 +97,6 @@
   }
 }
 
-/* Social Media Colors */
 .facebook {
   color: #1877f2;
 }
@@ -113,45 +107,8 @@
   color: #25d366;
 }
 
-/* Comment Section */
-.comment-section {
-  margin-top: 10px;
-  text-align: left;
-}
 
-.comment-box {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.submit-comment {
-  background: #007bff;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-
-  &:hover {
-    background: #0056b3;
-  }
-}
-
-/* Comments List */
-.comments-section {
-  margin-top: 10px;
-
-  .comment {
-    background: #f8f9fa;
-    padding: 8px;
-    border-radius: 5px;
-    margin-top: 5px;
-  }
-}
-
+/* Back Button */
 .back-button {
   display: inline-block;
   margin-top: 15px;

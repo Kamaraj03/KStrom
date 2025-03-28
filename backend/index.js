@@ -8,7 +8,6 @@ import { fileURLToPath } from "url";
 
 import storyRoutes from "./routes/storiesRoute.js";
 import poemRoutes from "./routes/poemsRoute.js";
-import commentRoutes from "./routes/commentsRoute.js";
 import quoteRoutes from "./routes/quoteRoutes.js"
 
 dotenv.config();
@@ -46,7 +45,6 @@ mongoose
 // Routes
 app.use("/api/stories", storyRoutes);
 app.use("/api/poems", poemRoutes);
-app.use("/api/comments", commentRoutes);
 app.use("/api/quote", quoteRoutes);
 
 // Upload Image
