@@ -1,239 +1,154 @@
-@import "../styles/variables"; // Import global variables if needed
+@import "./variables"; // Import any SCSS variables if needed
 @import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@700&display=swap');
 
-
-/* Home Page Main Container */
 .home-container {
-  position: relative;
+  background-image: url('/images/forest-bg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url('/images/forest-bg.webp') no-repeat center/cover;
-  padding: 0;
-  margin: 0;
-  z-index: 1;
-
-
-}
-
-/* Background Overlay */
-.overlay {
   position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4); // Dark overlay for better readability
-  z-index: 3;
-}
+  z-index: 0;
+  padding: 20px;
 
-/* Title and Subtitle */
-.title {
-  font-size: 1.8rem;
-  font-family: "Arima Madurai", sans-serif;
-  font-weight: bold;
-  color: white;
-  letter-spacing: 2px;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
-  z-index: 2;
-  text-align: center;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 0px;
-  line-height: 1.2;
-  width: 100%;
-   align-items: center;
-   display: flex;
-   justify-content: center;
-
-}
-
-.kstrom {
-  font-size: 1.8rem;
-  background: linear-gradient(45deg, #ff4500, #ff6347, #ff8c00, #ff0000, #8b0000);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.5);
-  animation: lightning 4.2s infinite alternate;
-}
-
-/* Lightning Flash */
-@keyframes lightning {
-  0% { text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.3); color: #ffcc00; }
-  }
-
-.subtitle {
-  font-size: 0.9rem;
-  color: white;
-  font-style: italic;
-  z-index: 2;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  line-height:1.2;
-  overflow: hidden;
-  white-space: nowrap;
-  display: inline-block;
-  animation: typing 7s steps(40, end) forwards;
-
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
   }
-}
 
-
-
-/* Quote of the Day Box */
-.quote-box {
-  position: absolute;
-  top: 25px;
-  left: 5px;
-  max-width: 250px;
-  font-size: 0.6rem;
-  font-weight: bold;
-  color: white;
-  padding: 0 15px;
-  background: transparent;
-  border-left: 6px double #007bff;
-  height: 40px;
-  text-align: left;
-  white-space: pre-line;
-  align-items: center;
-  display: flex;
-  line-height: 18px;
-  z-index: 2;
-}
-
-.search-toggle-container {
-  display: flex;
-  gap: 10px;
-  max-width: 700px;
-  margin-top: 30px;
-  align-self: flex-start;
-  width: auto;
-  margin-left: 0;
-  padding-left: 10px;
-}
-
-
-/* Search Bar */
-.search-bar {
-
-  display: flex;
-  align-items: center;
-  background: transparent;
-  border-radius: 50px;
-  padding: 2px 6px;
-  width: 100%;
-  max-width: 170px;
-  transition: all 0.3s ease-in-out;
-  z-index: 2;
-  margin-bottom: 7px;
-  margin-top: 7px;
-
-}
-
-.search-bar input {
-  width: 100%;
-  border: none;
-  outline: none;
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  font-weight: bold;
-  border-radius: 30px;
-  height: 36px;
-  text-align: left;
-}
-
-.search-bar input::placeholder {
-  color: #aaa;
-  font-style: italic;
-}
-
-.search-bar:hover {
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Toggle Buttons */
-.toggle-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  z-index: 2;
-
-  button {
-    min-height: 36px;
-    padding: 2px 6px;
-    border: none;
-    border-radius: 30px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    cursor: pointer;
-    background: linear-gradient(45deg, #ff6b6b, #ff9a9e);
-    color: white;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
-
-    &.active {
-      background: linear-gradient(45deg, #007bff, #00c6ff);
-    }
-
-    &:hover {
-      background: linear-gradient(45deg, #ff4757, #ff758c);
-      transform: scale(1.1);
-      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-    }
-  }
-}
-
-/* Grid Layout for Poems & Stories */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
-  justify-content: center;
-  padding: 15px;
-  max-width: 1200px;
-  width: 100%;
-  z-index: 2;
-  margin-top: 0px;
-  min-height: 300px;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .grid-container {
-    grid-template-columns: repeat(3, 1fr); /* 3 per row for tablets */
-  }
-}
-
-@media (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row for small screens */
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 600px;
   }
 
   .title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 3px;
+    font-family: "Arima Madurai", sans-serif;
+
+    .kstrom {
+      color: #ffcc00;
+    }
   }
 
   .subtitle {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 0;
   }
-}
 
-@media (max-width: 480px) {
+  .search-toggle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+
+    .search-bar {
+      width: 100%;
+      max-width: 400px;
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ffcc00;
+        border-radius: 25px;
+        font-size: 1rem;
+        text-align: center;
+        outline: none;
+        transition: box-shadow 0.2s;
+        
+        &:focus {
+          box-shadow: 0 0 5px rgba(255, 204, 0, 0.8);
+        }
+      }
+    }
+
+    .toggle-buttons {
+      display: flex;
+      justify-content: center;
+
+      button {
+        background: #ff6b6b;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        margin: 5px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transform: scale(1);
+
+        &:hover {
+          background: #e63946;
+          transform: scale(1.05);
+          box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        &.active {
+          background: #ffcc00;
+          color: black;
+        }
+      }
+    }
+  }
+
   .grid-container {
-    grid-template-columns: repeat(1, 1fr); /* 1 per row for mobile */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+
+    .grid-item {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
   }
 }
 

@@ -14,8 +14,6 @@ const AdminPanel = () => {
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showPoems, setShowPoems] = useState(true); // Toggle for showing Poems or Stories
-  const [quote, setQuote] = useState("");
-  const [quoteId, setQuoteId] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -24,17 +22,12 @@ const AdminPanel = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const [poemRes, storyRes, quoteRes] = await Promise.all([
+      const [poemRes, storyRes] = await Promise.all([
         axios.get(`${API_BASE_URL}/api/poems`),
         axios.get(`${API_BASE_URL}/api/stories`),
-        axios.get(`${API_BASE_URL}/api/quote`),
       ]);
       setPoems(poemRes.data);
       setStories(storyRes.data);
-      if (quoteRes.data) {
-        setQuote(quoteRes.data.text);
-        setQuoteId(quoteRes.data._id);
-      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -70,7 +63,7 @@ const AdminPanel = () => {
       resetForm();
       fetchData();
     } catch (error) {
-      console.error(`Error adding/updating ${type}:`, error.response ? error.response.data : error);
+      console.error(`Error adding/updating ${type}:`, error);
       alert(`Failed to add/update ${type}.`);
     }
     setLoading(false);
@@ -98,54 +91,14 @@ const AdminPanel = () => {
         alert(`${itemType.charAt(0).toUpperCase() + itemType.slice(1)} deleted successfully!`);
         fetchData();
       } catch (error) {
-        console.error(`Error deleting ${itemType}:`, error.response ? error.response.data : error);
+        console.error(`Error deleting ${itemType}:`, error);
         alert(`Failed to delete ${itemType}.`);
-      }
-    }
-  };
-
-  const handleQuoteSubmit = async () => {
-    try {
-      if (quoteId) {
-        await axios.put(`${API_BASE_URL}/api/quote/${quoteId}`, { text: quote });
-        alert("Quote updated successfully!");
-      } else {
-        await axios.post(`${API_BASE_URL}/api/quote`, { text: quote });
-        alert("Quote added successfully!");
-      }
-      fetchData();
-    } catch (error) {
-      console.error("Error updating quote:", error);
-      alert("Failed to update quote.");
-    }
-  };
-
-  const handleQuoteDelete = async () => {
-    if (window.confirm("Are you sure you want to delete the Quote of the Day?")) {
-      try {
-        await axios.delete(`${API_BASE_URL}/api/quote/${quoteId}`);
-        setQuote("");
-        setQuoteId(null);
-        alert("Quote deleted successfully!");
-        fetchData();
-      } catch (error) {
-        console.error("Error deleting quote:", error);
-        alert("Failed to delete quote.");
       }
     }
   };
 
   return (
     <div className="admin-panel">
-      <h2 className="admin-panel__title">Quote of the Day</h2>
-      <textarea
-        value={quote}
-        onChange={(e) => setQuote(e.target.value)}
-        placeholder="Enter Quote of the Day"
-      ></textarea>
-      <button onClick={handleQuoteSubmit}>{quoteId ? "Update" : "Add"} Quote</button>
-      {quoteId && <button onClick={handleQuoteDelete}>Delete Quote</button>}
-
       <h2 className="admin-panel__title">
         {editingId ? `Edit ${type.charAt(0).toUpperCase() + type.slice(1)}` : "Add New Poem or Story"}
       </h2>
@@ -170,7 +123,6 @@ const AdminPanel = () => {
         <button onClick={() => setShowPoems(false)} className={!showPoems ? 'active' : ''}>Show Stories</button>
       </div>
 
-     
       <ul className="admin-panel__list">
         {(showPoems ? poems : stories).map((item) => (
           <li key={item._id} className="admin-panel__item">
@@ -181,7 +133,6 @@ const AdminPanel = () => {
           </li>
         ))}
       </ul>
-
     </div>
   );
 };
