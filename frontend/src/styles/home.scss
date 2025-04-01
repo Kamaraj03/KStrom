@@ -125,8 +125,7 @@
       background: white;
       border-radius: 10px;
       padding: 15px;
-      height: 250px;
-      min-height:250px;
+      min-height: 250px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -135,6 +134,7 @@
     }
   }
 
+  /* Mobile Responsiveness */
   @media (max-width: 1024px) {
     .grid-container {
       grid-template-columns: repeat(3, 1fr);
@@ -151,7 +151,19 @@
     .grid-container {
       grid-template-columns: 1fr;
     }
+
+    .title {
+      font-size: 1.8rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+
+    .toggle-buttons button {
+      font-size: 0.8rem;
+      padding: 6px 10px;
+    }
   }
 }
-
 

@@ -18,7 +18,7 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/poem/:id" element={<ViewPoem />} />
         <Route path="/story/:id" element={<ViewStory />} />
-        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/vanakkam" element={<AdminPanel />} />
       </Routes>
     </AnimatePresence>
   );

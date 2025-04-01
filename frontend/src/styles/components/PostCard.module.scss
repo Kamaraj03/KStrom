@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil&display=swap');
+
 .postCard {
   background: white;
   border-radius: 10px;
@@ -6,7 +8,7 @@
   text-align: center;
   transition: 0.3s;
   max-width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -14,7 +16,7 @@
 
   img {
     width: 100%;
-    height: auto;
+    height: 150px;
     border-radius: 8px;
     object-fit: cover;
   }
@@ -27,7 +29,8 @@
 
     h2 {
       font-size: 1.2rem;
-      margin: 8px 0;
+      margin-bottom: 0;
+      font-family: 'Arima Madurai', sans-serif;
     }
 
     p {
@@ -35,6 +38,7 @@
       color: gray;
       margin-bottom: 0;
       flex-grow: 1; /* Ensures content expands properly */
+      font-family: 'Noto Sans Tamil', sans-serif;
     }
   }
 
@@ -63,4 +67,56 @@
     top: 10px;
     right: 10px;
   }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    padding: 12px;
+    
+    img {
+      height: 120px;  /* Adjust image height for mobile */
+    }
+
+    .content {
+      h2 {
+        font-size: 1rem;  /* Reduce title font size */
+      }
+
+      p {
+        font-size: 0.85rem;  /* Adjust text size for better readability on mobile */
+      }
+    }
+
+    .readMore {
+      font-size: 0.85rem;  /* Adjust button text size */
+    }
+
+    .trendingBadge {
+      top: 8px;  /* Adjust badge position for mobile */
+      right: 8px; 
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+
+    img {
+      height: 100px;  /* Further reduce image height on very small screens */
+    }
+
+    .content {
+      h2 {
+        font-size: 0.9rem;  /* Further reduce title font size */
+      }
+
+      p {
+        font-size: 0.8rem;  /* Further adjust text size */
+      }
+    }
+
+    .readMore {
+      font-size: 0.8rem;
+      padding: 5px 10px;  /* Smaller padding for smaller devices */
+    }
+  }
 }
+
