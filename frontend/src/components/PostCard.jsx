@@ -28,7 +28,7 @@ const PostCard = ({ post }) => {
 
       {/* Read More Button - Dynamic Routing */}
       <Link to={`/${post.type}/${post._id}`} className={styles.readMore}>
-        Read More
+        Read More...
       </Link>
     </motion.div>
   );
