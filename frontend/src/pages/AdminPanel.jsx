@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/adminpanel.scss"; // ✅ Ensure correct SCSS import
 
-const API_BASE_URL = "http://localhost:5000"; // Adjust if needed
+const API_BASE_URL = "http://43.204.112.219:5000"; // Adjust if needed
 
 const AdminPanel = () => {
   const [poems, setPoems] = useState([]);
