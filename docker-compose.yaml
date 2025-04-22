@@ -1,10 +1,16 @@
-
+version: '3.8'
 
 services:
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+
   backend:
+    container_name: kstrom_backend
     build: ./backend
     ports:
-      - "5000:5000"
+      - '5000:5000'
     volumes:
       - ./backend/uploads:/app/uploads
     environment:
@@ -13,12 +19,23 @@ services:
       - mongo
 
   frontend:
+    container_name: kstrom_frontend
     build: ./frontend
     ports:
-      - "5173:5173"
+      - '5173:5173'
+    depends_on:
+      - backend
 
-  mongo:
-    image: mongo
+  nginx:
+    image: nginx:alpine
+    container_name: kstrom_nginx
     ports:
-      - "27017:27017"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    depends_on:
+      - frontend
+      - backend
 
