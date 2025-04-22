@@ -1,6 +1,5 @@
-@import "./variables"; // Import any SCSS variables if needed
+@import "./variables"; // Import any SCSS variables
 @import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@700&display=swap');
-
 
 .home-container {
   background-image: url('/images/forest-bg.webp');
@@ -45,7 +44,7 @@
     font-family: "Arima Madurai", sans-serif;
 
     .kstrom {
-      color: #ffcc00;
+      color: $highlight-yellow; /* SCSS variable */
     }
   }
 
@@ -63,15 +62,16 @@
     width: 100%;
 
     .search-bar {
-      width: 100%;
-      max-width: 400px;
+      display: flex;
+      justify-content: center;
 
       input {
-        width: 100%;
-        padding: 10px;
-        border: 2px solid #ffcc00;
+        height: 36px;
+        padding: 2px 8px;
+        margin: 5px;
+        border: none;
         border-radius: 25px;
-        font-size: 1rem;
+        font-size: 0.8rem;
         text-align: center;
         outline: none;
         transition: box-shadow 0.2s;
@@ -87,26 +87,30 @@
       justify-content: center;
 
       button {
-        background: #ff6b6b;
+        height: 36px;
+        background: $primary-red; /* SCSS variable */
         color: white;
         border: none;
-        padding: 8px 12px;
+        padding: 6px 12px;
         margin: 5px;
         border-radius: 25px;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         cursor: pointer;
         transition: transform 0.2s, box-shadow 0.2s;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         transform: scale(1);
+        display: flex;
+        align-items: center; /* vertically center text */
+        justify-content: center;
 
         &:hover {
-          background: #e63946;
+          background: $hover-red; /* SCSS variable */
           transform: scale(1.05);
           box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         &.active {
-          background: #ffcc00;
+          background: $highlight-yellow; /* SCSS variable */
           color: black;
         }
       }
@@ -132,6 +136,12 @@
       justify-content: space-between;
       box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+      }
     }
   }
 
@@ -161,9 +171,12 @@
       font-size: 1rem;
     }
 
+    .search-bar input {
+      font-size: 0.8rem;
+    }
+
     .toggle-buttons button {
       font-size: 0.8rem;
-      padding: 6px 10px;
     }
   }
 }

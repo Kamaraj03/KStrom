@@ -3,8 +3,13 @@ version: '3.8'
 services:
   mongo:
     image: mongo
+    container_name: kstrom_mongo
     ports:
       - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - kstrom-network
 
   backend:
     container_name: kstrom_backend
@@ -17,6 +22,8 @@ services:
       - MONGO_URI=mongodb://mongo:27017/kstromdb
     depends_on:
       - mongo
+    networks:
+      - kstrom-network
 
   frontend:
     container_name: kstrom_frontend
@@ -25,6 +32,8 @@ services:
       - '5173:5173'
     depends_on:
       - backend
+    networks:
+      - kstrom-network
 
   nginx:
     image: nginx:alpine
@@ -38,4 +47,13 @@ services:
     depends_on:
       - frontend
       - backend
+    networks:
+      - kstrom-network
+
+volumes:
+  mongo-data:
+
+networks:
+  kstrom-network:
+    driver: bridge
 
