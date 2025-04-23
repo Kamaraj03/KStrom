@@ -37,26 +37,25 @@
       font-size: 0.9rem;
       color: gray;
       margin-bottom: 0;
-      flex-grow: 1; /* Ensures content expands properly */
+      flex-grow: 1;
       font-family: 'Noto Sans Tamil', sans-serif;
     }
   }
 
   .readMore {
-  display: inline-block;
-  margin-top: 0;
-  padding: 3.5px 7.5px;
-  background: #a1e6a1;
-  color: #000;
-  border-radius: 25px;
-  text-decoration: none;
-  transition: 0.3s;
-  border: none; // 👈 this line removes the black border
-  cursor: pointer;
+    display: inline-block;
+    margin-top: 0;
+    padding: 3.5px 7.5px;
+    background: #a1e6a1;
+    color: #000;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
 
     &:hover {
       background: #8bcf8b;
-  
     }
   }
 
@@ -71,31 +70,51 @@
     right: 10px;
   }
 
-  /* Mobile Adjustments */
+  .newBadge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff4081;
+    color: white;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+  }
+
   @media (max-width: 768px) {
     padding: 12px;
-    
+
     img {
-      height: 120px;  /* Adjust image height for mobile */
+      height: 120px;
     }
 
     .content {
       h2 {
-        font-size: 1rem;  /* Reduce title font size */
+        font-size: 1rem;
       }
 
       p {
-        font-size: 0.85rem;  /* Adjust text size for better readability on mobile */
+        font-size: 0.85rem;
       }
     }
 
     .readMore {
-      font-size: 0.85rem;  /* Adjust button text size */
+      font-size: 0.85rem;
     }
 
     .trendingBadge {
-      top: 8px;  /* Adjust badge position for mobile */
-      right: 8px; 
+      top: 8px;
+      right: 8px;
+    }
+
+    .newBadge {
+      top: 8px;
+      left: 8px;
+      font-size: 0.7rem;
+      padding: 3px 7px;
     }
   }
 
@@ -103,22 +122,27 @@
     padding: 10px;
 
     img {
-      height: 100px;  /* Further reduce image height on very small screens */
+      height: 100px;
     }
 
     .content {
       h2 {
-        font-size: 0.9rem;  /* Further reduce title font size */
+        font-size: 0.9rem;
       }
 
       p {
-        font-size: 0.8rem;  /* Further adjust text size */
+        font-size: 0.8rem;
       }
     }
 
     .readMore {
       font-size: 0.8rem;
-      padding: 5px 10px;  /* Smaller padding for smaller devices */
+      padding: 5px 10px;
+    }
+
+    .newBadge {
+      font-size: 0.65rem;
+      padding: 2px 6px;
     }
   }
 }

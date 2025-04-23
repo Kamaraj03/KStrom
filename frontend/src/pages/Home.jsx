@@ -26,10 +26,14 @@ const Home = () => {
           axios.get(`${API_BASE_URL}/api/stories`),
         ]);
 
+        // Include type (poem or story) and sort by createdAt in descending order
         const poemsWithType = poemsRes.data.map(poem => ({ ...poem, type: "poem" }));
         const storiesWithType = storiesRes.data.map(story => ({ ...story, type: "story" }));
 
-        setPosts([...poemsWithType, ...storiesWithType]);
+        // Combine both poems and stories and sort by createdAt (latest first)
+        const allPosts = [...poemsWithType, ...storiesWithType].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        setPosts(allPosts);
 
         const storedView = sessionStorage.getItem("lastView");
         if (storedView) setView(storedView);
@@ -61,7 +65,7 @@ const Home = () => {
   );
 
   const trendingPosts = filteredPosts.filter(
-    post => post.likes > 10 || (post.comments && post.comments.length > 5)
+    post => post.likes > 50 || (post.comments && post.comments.length > 5)
   );
   const filteredPoems = filteredPosts.filter(post => post.type === "poem");
   const filteredStories = filteredPosts.filter(post => post.type === "story");
@@ -99,7 +103,7 @@ const Home = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-	    <FontAwesomeIcon icon={faSearch} className="search-icon" />
+          <FontAwesomeIcon icon={faSearch} className="search-icon" />
         </div>
 
         <div className="toggle-buttons">
