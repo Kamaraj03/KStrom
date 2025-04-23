@@ -4,6 +4,9 @@ import PostCard from "../components/PostCard";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import "../styles/home.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -96,6 +99,7 @@ const Home = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
+	    <FontAwesomeIcon icon={faSearch} className="search-icon" />
         </div>
 
         <div className="toggle-buttons">
