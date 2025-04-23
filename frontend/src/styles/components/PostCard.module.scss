@@ -43,14 +43,16 @@
   }
 
   .readMore {
-    display: inline-block;
-    margin-top: 0;
-    padding: 3.5px 7.5px;
-    background: #a1e6a1;
-    color: #000;
-    border-radius: 25px;
-    text-decoration: none;
-    transition: 0.3s;
+  display: inline-block;
+  margin-top: 0;
+  padding: 3.5px 7.5px;
+  background: #a1e6a1;
+  color: #000;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s;
+  border: none; // 👈 this line removes the black border
+  cursor: pointer;
 
     &:hover {
       background: #8bcf8b;

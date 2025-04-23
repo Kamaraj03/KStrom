@@ -28,9 +28,17 @@ const Home = () => {
 
         setPosts([...poemsWithType, ...storiesWithType]);
 
-        // Retain last view after clicking back
         const storedView = sessionStorage.getItem("lastView");
         if (storedView) setView(storedView);
+
+        // ✅ Scroll restoration
+        const savedScroll = sessionStorage.getItem("scrollPosition");
+        if (savedScroll) {
+          setTimeout(() => {
+            window.scrollTo(0, parseInt(savedScroll));
+            sessionStorage.removeItem("scrollPosition");
+          }, 100);
+        }
       } catch (err) {
         setError("Failed to load content. Please try again.");
       } finally {
@@ -40,39 +48,46 @@ const Home = () => {
     fetchData();
   }, []);
 
-  // Store the last view before navigating
   const handleViewChange = (newView) => {
     setView(newView);
     sessionStorage.setItem("lastView", newView);
   };
 
-  // Filtering Data
-  const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredPosts = posts.filter(post =>
+    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-  const trendingPosts = filteredPosts.filter(post => post.likes > 10 || (post.comments && post.comments.length > 5));
+  const trendingPosts = filteredPosts.filter(
+    post => post.likes > 10 || (post.comments && post.comments.length > 5)
+  );
   const filteredPoems = filteredPosts.filter(post => post.type === "poem");
   const filteredStories = filteredPosts.filter(post => post.type === "story");
 
   return (
-    <div className="home-container" style={{
-      backgroundImage: "url('/images/forest-bg.webp')",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      minHeight: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      textAlign: "center",
-      position: "relative",
-      zIndex: "1",
-    }}>
-      <div className="overlay"></div>{/* Background Overlay for better text visibility */}
-      <h1 className="title"> உணர்வுகள் பேசும் இடம் <span className="kstrom"> KStrom</span></h1>
-      <p className="subtitle"> "A place where emotions speak"</p>
+    <div
+      className="home-container"
+      style={{
+        backgroundImage: "url('/images/forest-bg.webp')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        position: "relative",
+        zIndex: "1",
+      }}
+    >
+      <div className="overlay"></div>
 
-      {/* Search Bar */}
+      <h1 className="title">
+        உணர்வுகள் பேசும் இடம் <span className="kstrom">KStrom</span>
+      </h1>
+      <p className="subtitle">"A place where emotions speak"</p>
+
       <div className="search-toggle-container">
         <div className="search-bar">
           <input
@@ -83,11 +98,16 @@ const Home = () => {
           />
         </div>
 
-        {/* Toggle Buttons */}
         <div className="toggle-buttons">
-          <button className={view === "poems" ? "active" : ""} onClick={() => handleViewChange("poems")}>கவிதைகள்</button>
-          <button className={view === "stories" ? "active" : ""} onClick={() => handleViewChange("stories")}>சிறு கதைகள்</button>
-          <button className={view === "trending" ? "active" : ""} onClick={() => handleViewChange("trending")}>🔥 பிரபலமானவை</button>
+          <button className={view === "poems" ? "active" : ""} onClick={() => handleViewChange("poems")}>
+            கவிதைகள்
+          </button>
+          <button className={view === "stories" ? "active" : ""} onClick={() => handleViewChange("stories")}>
+            சிறு கதைகள்
+          </button>
+          <button className={view === "trending" ? "active" : ""} onClick={() => handleViewChange("trending")}>
+            🔥 பிரபலமானவை
+          </button>
         </div>
       </div>
 
@@ -98,8 +118,8 @@ const Home = () => {
       ) : (
         <motion.div className="grid-container" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
           {(view === "poems" && filteredPoems.map(post => <PostCard key={post._id} post={post} />)) ||
-          (view === "stories" && filteredStories.map(post => <PostCard key={post._id} post={post} />)) ||
-          (view === "trending" && trendingPosts.map(post => <PostCard key={post._id} post={post} />))}
+            (view === "stories" && filteredStories.map(post => <PostCard key={post._id} post={post} />)) ||
+            (view === "trending" && trendingPosts.map(post => <PostCard key={post._id} post={post} />))}
         </motion.div>
       )}
     </div>
