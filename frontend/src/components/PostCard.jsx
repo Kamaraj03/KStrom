@@ -10,18 +10,18 @@ const PostCard = ({ post }) => {
   const [isNew, setIsNew] = useState(false);
 
   useEffect(() => {
-    const readPosts = JSON.parse(sessionStorage.getItem("readPosts") || "[]");
+    const readPosts = JSON.parse(localStorage.getItem("readPosts") || "[]");
     setIsNew(!readPosts.includes(post._id));
   }, [post._id]);
 
   const handleReadMore = () => {
-    const readPosts = JSON.parse(sessionStorage.getItem("readPosts") || "[]");
+    const readPosts = JSON.parse(localStorage.getItem("readPosts") || "[]");
     if (!readPosts.includes(post._id)) {
       readPosts.push(post._id);
-      sessionStorage.setItem("readPosts", JSON.stringify(readPosts));
+      localStorage.setItem("readPosts", JSON.stringify(readPosts));
     }
 
-    sessionStorage.setItem("scrollPosition", window.scrollY); // Save scroll position
+    sessionStorage.setItem("scrollPosition", window.scrollY); // Keep this here to restore scroll
     navigate(`/${post.type}/${post._id}`);
   };
 
