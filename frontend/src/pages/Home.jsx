@@ -13,7 +13,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const Home = () => {
   const location = useLocation();
   const [posts, setPosts] = useState([]);
-  const [view, setView] = useState("poems");
+  const [view, setView] = useState("stories");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
